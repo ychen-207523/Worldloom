@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "ashen-empire",
+  "name": "The Ashen Empire",
+  "background": "A fading empire trades bottled memories as currency. The last library holds memories nobody alive can interpret.",
+  "tone": "Political intrigue, strange discoveries, and fragile hope",
+  "rules": ["Memories can be transferred, but each transfer loses a detail.", "Nobody can prove whether the emperor is still alive."],
+  "locations": [{"id": "last-library", "name": "The Last Library", "description": "An archive surrounded by a hungry city."}],
+  "factions": [
+    {"id": "keepers", "name": "The Keepers", "goal": "Protect the library", "relationships": {"collectors": "distrust"}},
+    {"id": "collectors", "name": "The Collectors", "goal": "Privatize the memory trade"}
+  ],
+  "resources": [{"id": "memories", "name": "Bottled memories", "unit": "vials", "description": "Currency that carries personal history."}],
+  "attributes": [{"id": "resonance", "name": "Memory resonance", "description": "Sensitivity to another person's memories.", "min": 0, "max": 100}],
+  "custom": {"calendar": {"monthsPerYear": 10}, "magic": "Unreliable and intimate"}
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "orbital-garden",
+  "name": "Orbital Garden",
+  "background": "An isolated orbital habitat must survive after supply ships stop arriving. Its garden is failing.",
+  "tone": "Grounded science fiction, cooperation, and survival",
+  "rules": ["Air and water are finite.", "There is no magic or faster-than-light communication."],
+  "locations": [{"id": "green-ring", "name": "The Green Ring", "gravity": "rotational"}],
+  "factions": [{"id": "engineers", "name": "Maintenance Union", "goal": "Keep life support functioning"}],
+  "resources": [{"id": "oxygen", "name": "Oxygen", "unit": "kg"}, {"id": "water", "name": "Water", "unit": "liters"}],
+  "attributes": [{"id": "radiation", "name": "Radiation exposure", "unit": "mSv", "min": 0}],
+  "custom": {"technology": {"aiRights": true, "habitatAgeYears": 140}}
+}
