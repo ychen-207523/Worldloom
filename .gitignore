@@ -29,3 +29,7 @@ target/
 *.iml
 .env
 work/
+node_modules/
+dist/
+.env.*
+!.env.example
