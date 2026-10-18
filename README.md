@@ -8,26 +8,26 @@ This step covers world definitions. Characters, simulation, AI calls, and Lambda
 
 Requirements: Java 17+, Maven 3.9+, Node.js 20.17+ (or a supported newer LTS), and npm. The frontend uses Vite 6 to support the installed Node 20 runtime.
 
-In the first PowerShell terminal:
+**Terminal 1 — backend (PowerShell):**
 
 ```powershell
 cd D:\Project\Worldloom\backend
-$env:JAVA_HOME = "C:\Program Files\Java\jdk-22"
-$env:Path = "$env:JAVA_HOME\bin;$env:Path"
 $env:AWS_REGION = "us-east-1"
 $env:WORLDLOOM_TABLE = "WorldLoomWorlds"
 mvn spring-boot:run
 ```
 
-Your default AWS profile is used automatically. If `AWS_PROFILE` is already set to another profile, remove it with `Remove-Item Env:AWS_PROFILE -ErrorAction SilentlyContinue`. Change `JAVA_HOME` if your JDK is installed elsewhere.
+Your default AWS profile is used automatically. If `AWS_PROFILE` is already set to another profile, remove it with `Remove-Item Env:AWS_PROFILE -ErrorAction SilentlyContinue`.
 
-In a second PowerShell terminal:
+**Terminal 2 — frontend (PowerShell):**
 
 ```powershell
 cd D:\Project\Worldloom\frontend
 npm install
 npm run dev
 ```
+
+Run `npm install` on the first run and whenever frontend dependencies change; otherwise, `npm run dev` is enough. Java and Maven should already be configured in your terminal.
 
 Open **http://127.0.0.1:5173**. Both processes must remain running. Stop either with Ctrl+C. On the first run, Maven and npm download dependencies.
 
