@@ -1,4 +1,7 @@
-package io.worldloom;
+package io.worldloom.cli;
+
+import io.worldloom.world.DynamoWorldRepository;
+import io.worldloom.world.WorldDefinition;
 
 import java.nio.file.Files;
 import java.nio.file.Path;

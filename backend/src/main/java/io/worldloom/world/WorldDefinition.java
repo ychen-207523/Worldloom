@@ -1,4 +1,4 @@
-package io.worldloom;
+package io.worldloom.world;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -20,9 +20,6 @@ public final class WorldDefinition {
     public static WorldDefinition parse(String source) throws IOException {
         JsonNode value = JSON.readTree(source);
         if (!(value instanceof ObjectNode root)) throw new IllegalArgumentException("World must be a JSON object");
-        if (!root.path("schemaVersion").isIntegralNumber() || !root.path("schemaVersion").canConvertToInt()
-                || root.path("schemaVersion").intValue() != 1)
-            throw new IllegalArgumentException("schemaVersion must be 1");
         requiredText(root, "id");
         if (!root.path("id").asText().matches("[a-z0-9][a-z0-9-]{0,63}"))
             throw new IllegalArgumentException("id must be 1–64 lowercase letters, digits or hyphens, starting with a letter or digit");

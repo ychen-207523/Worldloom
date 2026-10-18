@@ -1,4 +1,4 @@
-package io.worldloom;
+package io.worldloom.world;
 
 import java.io.IOException;
 import java.time.Instant;
@@ -9,7 +9,7 @@ import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
 import software.amazon.awssdk.services.dynamodb.model.GetItemRequest;
 import software.amazon.awssdk.services.dynamodb.model.PutItemRequest;
 
-public final class DynamoWorldRepository {
+public final class DynamoWorldRepository implements WorldRepository {
     private final DynamoDbClient client;
     private final String table;
 

@@ -115,6 +115,31 @@ Additional fields anywhere in the document are preserved, including a `custom` o
 
 Definitions are limited to 350 KB of compact UTF-8 JSON to leave room under DynamoDB's item limit. Each definition is stored as one item (`worldId`, `definition`, `createdAt`). Future characters and event histories will be separate records, not appended to this document.
 
+## Backend package structure
+
+Java code is organized by feature under `backend/src/main/java/io/worldloom`:
+
+```text
+io/worldloom/
+├── WorldLoomApplication.java       Spring Boot entry point
+├── api/
+│   ├── ApiErrors.java              Shared HTTP error handling
+│   └── HealthController.java       API health endpoint
+├── cli/
+│   └── Main.java                   Command-line entry point
+├── config/
+│   └── DynamoDbConfiguration.java  AWS client and repository wiring
+└── world/
+    ├── WorldDefinition.java        World document and validation
+    ├── WorldRepository.java        Storage interface
+    ├── DynamoWorldRepository.java  DynamoDB implementation
+    └── WorldController.java        World HTTP endpoints
+```
+
+Tests mirror the feature packages under `backend/src/test/java/io/worldloom`. New features such as characters and events should get sibling packages (`character`, `event`) as their code is added. Shared API handling and configuration stay outside individual features. Startup commands and HTTP paths are unchanged. In an IDE, the CLI main class is now `io.worldloom.cli.Main`.
+
+After package moves, run `mvn clean test` before restarting the backend to remove compiled classes at their old package paths.
+
 ## Next small step
 
 Improve faction and resource editing with dedicated form controls, then add saved-world updates before starting characters or events.

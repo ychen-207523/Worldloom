@@ -1,4 +1,4 @@
-package io.worldloom;
+package io.worldloom.world;
 
 import java.lang.reflect.Proxy;
 import java.nio.file.Files;

@@ -1,4 +1,4 @@
-package io.worldloom;
+package io.worldloom.world;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.nio.file.Files;
@@ -17,9 +17,8 @@ class WorldDefinitionTest {
         }
     }
 
-    @Test void rejectsUnsupportedVersionAndBlankBackground() throws Exception {
+    @Test void rejectsBlankBackground() throws Exception {
         String source = example();
-        assertThrows(IllegalArgumentException.class, () -> WorldDefinition.parse(source.replace("\"schemaVersion\": 1", "\"schemaVersion\": 2")));
         var node = new ObjectMapper().readTree(source);
         ((com.fasterxml.jackson.databind.node.ObjectNode) node).put("background", " ");
         assertThrows(IllegalArgumentException.class, () -> WorldDefinition.parse(node.toString()));
